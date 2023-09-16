@@ -12,6 +12,23 @@
  */
 var isValidBST = function(root) {
     
+    let prev = null
+    
+    const traverseBst = (root) =>{
+        if(!root) return true
+        if(!traverseBst(root.left)) return false
+        if(prev!==null && prev>=root.val) return false
+        prev = root.val
+        return traverseBst(root.right)
+    }
+    
+    return traverseBst(root)
+};
+
+
+/*
+var isValidBST = function(root) {
+    
     let res = []
     
     const traverseBst = (root, res) =>{
@@ -29,3 +46,5 @@ var isValidBST = function(root) {
     
     return true
 };
+
+*/
