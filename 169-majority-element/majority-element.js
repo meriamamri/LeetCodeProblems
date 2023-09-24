@@ -2,7 +2,18 @@
  * @param {number[]} nums
  * @return {number}
  */
+
 var majorityElement = function(nums) {
+    let frequency = {}
+    let n = nums.length
+    for(let num of nums){
+        frequency[num] = (frequency[num] || 0)+1
+        if(frequency[num]>n/2){
+            return num
+        }
+    }
+}
+/*var majorityElement = function(nums) {
     let majMap = new Map()
     let n =nums.length
     for(let i=0; i<n; i++){
@@ -26,4 +37,4 @@ var majorityElement = function(nums) {
 
     return value
 
-};
+};*/
