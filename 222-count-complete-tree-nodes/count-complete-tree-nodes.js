@@ -11,14 +11,6 @@
  * @return {number}
  */
 var countNodes = function(root) {
-    let arr=[]
-    const postOrder = (root, arr)=>{
-        if(!root) return root
-        if(root.left) postOrder(root.left,arr)
-        if(root.right) postOrder(root.right,arr)
-        arr.push(root.val)
-    }
-    
-    postOrder(root, arr)
-    return arr.length
+    if(!root) return 0
+    return 1 + countNodes(root.left) + countNodes(root.right)
 };
