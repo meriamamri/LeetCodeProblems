@@ -4,14 +4,14 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-    let SumMap = new Map()
+    let numsMap = new Map()
     for(let i=0; i<nums.length; i++){
         let difference = target-nums[i]
-        let index = SumMap.get(difference)
-        if(index!==undefined){
-            return [index, i]
+        if(numsMap.has(difference)){
+            return [numsMap.get(difference), i]
         }else{
-            SumMap.set(nums[i], i)
+            numsMap.set(nums[i], i)
         }
     }
+    
 };
