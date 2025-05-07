@@ -3,16 +3,12 @@
  * @return {number}
  */
 var maxProfit = function(prices) {
+    let left =0
     let max = 0
-    let start = 0
-    for(let end=0; end<prices.length; end++){
-        let profit = prices[end]-prices[start]
-        if(profit<0){
-            start=end
-        }
-        else{
-            max = Math.max(max, profit)
-        } 
+    for(let right=1; right<prices.length; right++){
+        let profit = prices[right]-prices[left]
+        if(profit<0) left=right
+        else max = Math.max(max, profit)
     }
 
     return max
