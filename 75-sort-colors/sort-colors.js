@@ -20,7 +20,6 @@ var sortColors = function(nums) {
             nums[r] = nums[i]
             nums[i] = value
             r--
-            //i++
         }
     }
 };
