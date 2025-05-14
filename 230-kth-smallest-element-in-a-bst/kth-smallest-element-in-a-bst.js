@@ -11,17 +11,12 @@
  * @param {number} k
  * @return {number}
  */
-var kthSmallest = function(root, k) {
-    let arr = []
-    
-    const traversalBST = (root,arr) =>{
-        if(!root) return root
-        if(root.left) traversalBST(root.left, arr)
+var kthSmallest = function(root, k, arr=[]) {
+    if(root){
+        kthSmallest(root.left, k, arr)
         arr.push(root.val)
-        if(root.right) traversalBST(root.right, arr)
+        kthSmallest(root.right, k, arr)
     }
-    
-    traversalBST(root, arr)
-    
+
     return arr[k-1]
 };
