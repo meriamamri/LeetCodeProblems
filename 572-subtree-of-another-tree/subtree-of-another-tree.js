@@ -12,32 +12,13 @@
  * @return {boolean}
  */
 var isSubtree = function(root, subRoot) {
-    const isSameTree = (p, q) => {
+    const isSame = (p, q) =>{
         if(!p && !q) return true
-        if(!p && q) return false
-        if(p && !q) return false
-        if(p.val !== q.val) return false
-        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
-    };
-    
-    const findSubTree = (root) =>{
-        let firstSubRoot = []
-        let stack = [root]
-
-        while(stack.length){
-            let node = stack.pop()
-            if(node.val === subRoot.val){
-                let sameTree=isSameTree(node, subRoot)
-                if(sameTree) return true
-            } 
-            if(node.left) stack.push(node.left)
-            if(node.right) stack.push(node.right)
-        }
-        
-        return false
+        if( p && !q || !p && q || p.val !== q.val) return false
+        return isSame(p.left, q.left) && isSame(p.right, q.right)
     }
-    
-    
-    return findSubTree(root)
-    
+
+    if(!root) return false
+    if(isSame(root, subRoot) || !subRoot) return true
+    return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot)
 };
